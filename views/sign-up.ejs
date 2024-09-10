@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+    <link rel="stylesheet" href="/styles/signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Patua+One&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+        <i class="fa fa-bullseye " style="font-size:48px;color:white"></i>
+        <h1>Bloggit</h1>
+    </div>
+       
+    </div>
+
+    <div class="container">
+        <div class="box1">
+            <div class="transbox"></div>
+        </div>
+        <div class="box2">
+           
+        <h1 >Sign up</h1>
+        <form action="/Create" method="POST">
+            <label class="text">Name</label>
+            <input type="text" placeholder="Enter your username" name="username">
+       
+        
+            <label class="text">Email</label>
+            <input type="email" placeholder="Enter your email" name="email">
+   
+       
+            <label class="text">Password</label>
+            <input type="password" placeholder="Enter your password (Atleast 8 character)" name="password">
+        
+
+             <button class="bg text" >
+                Create Account
+             </button>
+            </form>
+            <hr>
+            <div class="outh">
+            <button class="bg">
+               <b> Sign up with Google </b>
+            </button>
+            <button class="bg">
+                <b> Sign up with Apple</b>
+             </button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

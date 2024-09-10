@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link rel="stylesheet" href="/styles/post.css">
+</head>
+<body>
+    <div class="container">
+        <form id="posts" action="/savepost" method="post">
+        <div class="heading">
+            <textarea placeholder="enter post title" name="title" rows="1" value="title"><%if(locals.title){%><%=title%><%}%></textarea>
+        </div>
+        <hr>
+        <div class="body" >
+            <textarea placeholder="enter your content"  name="content"><%if(locals.content){%><%=content%><%}%></textarea>
+        </div>
+        <button class="bg"> Save </button>
+    </form>
+    </div>
+</body>
+</html>

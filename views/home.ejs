@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/styles/home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bree+Serif&family=Lilita+One&family=Patua+One&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lilita+One&family=Patua+One&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div id="blur">
+      <div class="header">
+        <i class="fa fa-bullseye" style="font-size: 48px; color: #282828"></i>
+        <div class="search">
+          <button class="icon"><i class="fa fa-search"></i></button>
+          <input type="search" class="bar" placeholder="Search your posts" />
+        </div>
+        <div class="box">
+          <img
+            width="30"
+            height="30"
+            src="https://img.icons8.com/ios/50/help--v1.png"
+            alt="help--v1"
+          />
+          <img
+            width="40"
+            height="40"
+            src="https://img.icons8.com/fluency-systems-filled/48/guest-male.png"
+            alt="guest-male"
+            style="margin-right: 4%"
+          />
+        </div>
+      </div>
+      <div class="container">
+        <nav class="side-nav">
+          <div class="item1">
+            <div class="select">
+              <h2 id="blogtitle">
+                <%
+                if(blog.length!=0 && cnt==0){
+                index=blog.length-1;
+                }
+                if(blog[index]!==undefined){%>
+                <%= blog[index].name%><%}%>
+                </h2>
+              <i class="fa fa-angle-down" id="angle"></i>
+            </div>
+            <div class="options">
+              <% for(var i=blog.length-1;i>=0;i--){%>
+              <div class="option" id="<%=i%>">
+                <p><%= blog[i].name%></p>
+                <form method="post" action="/deleteblog">
+                  <button value="<%=i%>" name="value" class="dustbin">
+                    <i class="material-icons" style="font-size: 2.3vh"
+                      >delete</i
+                    >
+                  </button>
+                </form>
+              </div>
+
+              <%}%>
+
+              <button id="blog">New Blog</button>
+            </div>
+            <form method="GET" action="/newpost">
+              <button class="post"><b> New Post</b></button>
+            </form>
+            <hr />
+          </div>
+          <div class="item2 text">
+            <button>Posts</button>
+            <button>Comments</button>
+            <button>Pages</button>
+            <button>Settings</button>
+            <button>View Blog</button>
+          </div>
+        </nav>
+        <div class="main">
+        <% if(blog.length!=0){
+        
+        if(blog[index].post.length!=0){
+          for(var i=blog[index].post.length-1;i>=0;i--)
+          {%>
+                <div class="postbox" id="<%=i%>">
+                  <h2><%=blog[index].post[i].title%></h2>
+                </div>
+                <%}}}%>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup">
+      <div class="heading">
+        <h1>Choose a name for your blog</h1>
+
+        <form method="POST" action="/newblog">
+          <input
+            type="text"
+            id="blogname"
+            name="blogname"
+            placeholder="Title"
+          />
+
+          <button class="bg create">Create</button>
+        </form>
+        <button class="bg cancel">Cancel</button>
+      </div>
+    </div>
+    <script>
+      var blog = <%- JSON.stringify(blog) %>;
+      var index="<%=index%>";
+    </script>
+    <script src="/home.js"></script>
+  </body>
+</html>
