@@ -193,11 +193,15 @@ app.post("/deleteblog",(req,res)=>{
 app.get("/newpost",(req,res)=>{
   const title = req.query.title;
   const content = req.query.content;
+  const bindex=req.query.bindex;
+  const pindex=req.query.pindex;
 
   // Render the post.ejs file, passing the title and content from the query parameters
   res.render("post.ejs", {
     title: title,
-    content: content
+    content: content,
+    bindex:bindex,
+    pindex:pindex
   });
  
 });
@@ -205,11 +209,19 @@ app.get("/newpost",(req,res)=>{
 
 app.post("/savepost",(req,res)=>{
   console.log(req.body);
+  blog[req.body.bindex].post[req.body.pindex].title=req.body.title;
+  blog[req.body.bindex].post[req.body.pindex].content=req.body.content;
+  console.log(blog[req.body.bindex].post[req.body.pindex]);
+  res.redirect("/homee");
+})
+
+
+app.post("/createpost",(req,res)=>{
+  console.log(req.body);
   console.log(blog);
   console.log("index=",index);
   console.log(blog[index].post);
   blog[index].post.push(req.body);
-  
   console.log(blog[index].post);
   console.log("blog=",blog);
   res.redirect("/homee");

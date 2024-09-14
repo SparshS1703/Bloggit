@@ -81,7 +81,7 @@ for(let i=0;i<postboxs.length;i++)
         let title=p.title;
         let content=p.content;
        
-        window.location.href=`/newpost?title=${title}&content=${content}`;
+        window.location.href=`/newpost?title=${title}&content=${content}&bindex=${index}&pindex=${index1}`;
 
 
 

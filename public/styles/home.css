@@ -71,7 +71,8 @@
 
 
 .header{
-    background-color: #faf7f1;
+    background-color: #4e4d49;
+    color: #edeae8;
     display: flex;
     position: fixed;
     justify-content: space-between;
@@ -83,7 +84,8 @@ i{
     margin-left: 2%;
 }
 .bar{
-    background-color: #edeae8;
+    background-color: #4e4d49;
+    color: #edeae8;
     border:none;
     height:100%;
     width:90%;
@@ -91,10 +93,17 @@ i{
     padding-right:1%;
     font-size: 2.5vh;
 }
+.bar::placeholder{
+    color: #edeae8;
+}
+.bar:focus {
+    border: none;  /* Removes the border when focused */
+    outline: none; /* Removes the default outline */
+}
 .search{
     height: 60%;
     width: 50%;
-    background-color: #edeae8;
+    background-color: #4e4d49;
     border-radius: 10px;
     display:flex;
     justify-content: flex-start;
@@ -106,7 +115,7 @@ i{
     height:5vh;
     width:3vw;
    border-radius: 10px;
-    background-color: #edeae8;
+    background-color: #4e4d49;
     border:none;
     margin-left: 1%;
 }
@@ -118,6 +127,10 @@ i{
     background-color: #282828 ;
     transition: 0.5s;
 }
+.icon:hover>i{
+    color:#edeae8;
+    transition: 0.5s;
+}
 .box{
     width:20%;
     height: 100%;
@@ -125,7 +138,22 @@ i{
     justify-content: space-around;
     align-items: center;
 }
-
+.help{
+    transition: 0.5s;
+}
+.account{
+    transition: 0.5s;
+}
+.help:hover{
+    width: 6vh;
+    height: 6vh;
+    transition: 0.5s;
+}
+.account:hover{
+    width: 6vh;
+    height: 6vh;
+    transition: 0.5s;
+}
 
 /*    container    */
 
@@ -143,7 +171,7 @@ i{
 .side-nav{
     height:100%;
     width:25%;
-    background-color:#edeae8;
+    background-color:#725e45    ;
     display:flex;
     flex-direction: column;
 }
@@ -158,7 +186,7 @@ i{
 .select{
     width:100%;
     text-align: center;
-    background-color: #7AA2E3;
+    background-color: #725e45;
     z-index:3;
     display: inline-block;
 }
@@ -248,12 +276,12 @@ i{
 .item2>button{
     width:100%;
     height:10%;
-    background-color:#edeae8 ;
+    background-color:#725e45 ;
     border: none;
     margin:2% 0% 2% 0%;
 }
 .item2>button:hover{
-    background-color: #9e9c9a;
+    background-color: #d6cfbf;
 }
 
 .bg{
@@ -273,7 +301,7 @@ i{
     font-family: Arvo;
 }
 .main{
-    background-color: #282828;
+    background-color: #d6cfbf;
     width:75%;
     height: 100%;
     display: flex;
@@ -283,7 +311,16 @@ i{
 }
 .postbox{
    margin:3% 3% 0 3%;   
-   background-color: #edeae8;
+   background-color: #725e45;
+   color:#edeae8;
    height:20%;
+   border-radius: 2vh;
+   padding:1%;
+   
    
 }
+/* #4e4d49
+#725e45
+#b7946a
+#e2c58d
+#d6cfbf */

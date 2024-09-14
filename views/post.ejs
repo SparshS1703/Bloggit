@@ -8,16 +8,30 @@
 </head>
 <body>
     <div class="container">
-        <form id="posts" action="/savepost" method="post">
+        <form id="posts" action="/createpost" method="post">
         <div class="heading">
-            <textarea placeholder="enter post title" name="title" rows="1" value="title"><%if(locals.title){%><%=title%><%}%></textarea>
+            <textarea placeholder="enter post title" name="title" rows="1" value="title" class="title"><%if(locals.title){%><%=title%><%}%></textarea>
         </div>
         <hr>
         <div class="body" >
-            <textarea placeholder="enter your content"  name="content"><%if(locals.content){%><%=content%><%}%></textarea>
+            <textarea placeholder="enter your content"  name="content" class="content"><%if(locals.content){%><%=content%><%}%></textarea>
         </div>
-        <button class="bg"> Save </button>
+        <div class="buttons">
+            <button class="bg save">Save</button>
+        <button class="bg create"> Create </button>
+        
+    </div>
     </form>
     </div>
+    <script>
+        var title="<%=title%>"
+        console.log(title);
+        var content="<%=content%>"
+        var pindex="<%=pindex%>"
+        var bindex="<%=bindex%>"
+        </script>
+    <script src="post.js">
+       
+    </script>
 </body>
 </html>
