@@ -227,6 +227,15 @@ app.post("/createpost",(req,res)=>{
   res.redirect("/homee");
 })
 
+app.post("/deletepost",(req,res)=>{
+  console.log("hello");
+  const pindex=req.body.pindex;
+  const bindex=req.body.bindex;
+  blog[bindex].post.splice(pindex,1);
+  console.log(blog[bindex].post);
+  res.redirect("/homee");
+})
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}.`);
 });

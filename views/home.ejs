@@ -36,8 +36,10 @@
       <div class="header">
         <i class="fa fa-bullseye" style="font-size: 48px; color: #edeae8"></i>
         <div class="search">
+          <form method="POST" action="/searchpost">
           <button class="icon"><i class="fa fa-search"></i></button>
-          <input type="search" class="bar" placeholder="Search your posts" />
+          <input type="search" class="bar" placeholder="Search your posts" name="post"/>
+        </form>
         </div>
         <div class="box">
           <svg class="help" width="5vh" height="5vh" viewBox="-1.2 -1.2 26.40 26.40" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#edeae8"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 17H12.01M12 14C12.8906 12.0938 15 12.2344 15 10C15 8.5 14 7 12 7C10.4521 7 9.50325 7.89844 9.15332 9M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#edeae8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
@@ -75,7 +77,9 @@
               <button id="blog">New Blog</button>
             </div>
             <form method="GET" action="/newpost">
-              <button class="post"><b> New Post</b></button>
+              <button class="post">
+                <svg width="5vh" height="5vh" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#282828"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M12 4V20" stroke="#D3D3D3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </button>
             </form>
             <hr />
           </div>
@@ -90,11 +94,18 @@
         <div class="main">
         <% if(blog.length!=0){
         
-        if(blog[index].post.length!=0){
+        if(blog[index] && blog[index].post && blog[index].post.length!=0){
           for(var i=blog[index].post.length-1;i>=0;i--)
           {%>
-                <div class="postbox" id="<%=i%>">
+                <div class="postbox" blog-index="<%=index%>" id="<%=i%>">
+                  <div class="up">
                   <h2><%=blog[index].post[i].title%></h2>
+                  <div class="icons">
+                  <svg class="del" fill="#edeae8" width="3vh" height="3vh" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#edeae8"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M5.755,20.283,4,8H20L18.245,20.283A2,2,0,0,1,16.265,22H7.735A2,2,0,0,1,5.755,20.283ZM21,4H16V3a1,1,0,0,0-1-1H9A1,1,0,0,0,8,3V4H3A1,1,0,0,0,3,6H21a1,1,0,0,0,0-2Z"></path></g></svg>
+                </div>
+                  </div>
+                  <hr>
+                  
                 </div>
                 <%}}}%>
         </div>

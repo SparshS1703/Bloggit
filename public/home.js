@@ -83,10 +83,34 @@ for(let i=0;i<postboxs.length;i++)
        
         window.location.href=`/newpost?title=${title}&content=${content}&bindex=${index}&pindex=${index1}`;
 
-
-
     })
 }
 
 
+const del=document.getElementsByClassName("del");
+for(let i=0;i<del.length;i++){
+del[i].addEventListener("click",async (e)=>{
+    e.stopPropagation();
+    let postIndex = e.currentTarget.closest(".postbox").id;
+    let blogIndex = e.currentTarget.closest(".postbox").getAttribute('blog-index');
 
+        console.log("Delete post at index:", postIndex, "from blog at index:", blogIndex);
+
+        const req=new Request("http://localhost:3000/deletepost",{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json' // Ensures the server treats the body as JSON
+            },
+            body: JSON.stringify({pindex: postIndex,
+                bindex: blogIndex
+            }),
+        })
+        const res=await fetch(req);
+        if(res.ok)
+        {
+            window.location.reload(); 
+        }
+
+   
+})
+}

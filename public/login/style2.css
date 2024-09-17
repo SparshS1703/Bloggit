@@ -58,7 +58,7 @@ input{
   
 }
 input::placeholder{
-    color: #faf7f1;
+    color: #9e9c9a;
 }
 label{
     align-self: flex-start;

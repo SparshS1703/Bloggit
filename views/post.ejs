@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
     <link rel="stylesheet" href="/styles/post.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cantora+One&family=Nanum+Myeongjo:wght@400;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cantora+One&family=Nanum+Myeongjo:wght@400;700;800&family=Permanent+Marker&family=SUSE:wght@100..800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <form id="posts" action="/createpost" method="post">
         <div class="heading">
-            <textarea placeholder="enter post title" name="title" rows="1" value="title" class="title"><%if(locals.title){%><%=title%><%}%></textarea>
+            <textarea placeholder="Enter Title" name="title" rows="1" value="title" class="title"><%if(locals.title){%><%=title%><%}%></textarea>
         </div>
         <hr>
         <div class="body" >
-            <textarea placeholder="enter your content"  name="content" class="content"><%if(locals.content){%><%=content%><%}%></textarea>
+            <textarea placeholder="Enter your Content"  name="content" class="content"><%if(locals.content){%><%=content%><%}%></textarea>
         </div>
         <div class="buttons">
             <button class="bg save">Save</button>

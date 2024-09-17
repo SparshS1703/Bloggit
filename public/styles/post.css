@@ -9,6 +9,8 @@
     align-items: center;
     flex-direction: column;
     gap:10%;
+    background-color:#d6cfbf;
+
 }
 #posts{
     height: 100%;
@@ -42,4 +44,43 @@ textarea{
 }
 hr{
     width: 100%;
+}
+.title{
+    border-radius: 20px;
+    padding: 2%;
+    font-family: Cantora One;
+    font-size: 5vh;
+    background-color: #e7e7e7;
+}
+.content{
+    border-radius: 20px;
+    padding: 2%;
+    background-color: #e7e7e7;
+    font-family: Nanum Myeongjo;
+    font-size: 3vh;
+
+}
+hr{
+    margin-top: 2%;
+}
+.bg{
+    background-color:#282828 ;
+    color:#faf7f1;
+    border:none;
+    padding:0.8vw;
+    border-radius: 10px;
+    font-size: 1.3vw;
+    font-family: Cantora One;
+}
+.bg:hover{
+    background-color: 	#faf7f1;
+    color:#282828;
+    transition:0.5s;
+}
+.buttons{
+    margin-top: 1%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap:2%;
 }
