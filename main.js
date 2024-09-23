@@ -14,6 +14,11 @@ var logged=false;
 let blog=[];
 let index=-1;
 let cnt=0;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
 
 
 
@@ -227,6 +232,8 @@ app.post("/createpost",(req,res)=>{
   res.redirect("/homee");
 })
 
+
+
 app.post("/deletepost",(req,res)=>{
   console.log("hello");
   const pindex=req.body.pindex;
@@ -236,7 +243,11 @@ app.post("/deletepost",(req,res)=>{
   res.redirect("/homee");
 })
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}.`);
-});
+app.post("/searchpost",(req,res)=>{
+  const p=req.body.post;
+ const searched= blog[index].post.find(p);
+})
+
+
+
 
