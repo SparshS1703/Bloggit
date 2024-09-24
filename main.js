@@ -43,7 +43,7 @@ app.use(session({
   secret: '123456sparsh', // Replace with a random string
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false } // Set to true if using HTTPS
+  cookie: { secure: true } // Set to true if using HTTPS
 }));
 
 
