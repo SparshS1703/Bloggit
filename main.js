@@ -4,6 +4,9 @@ import bodyParser from "body-parser";
 import { fileURLToPath } from "url";
 import pg from "pg";
 import bcrypt from "bcrypt";
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -23,11 +26,10 @@ app.listen(PORT, () => {
 
 
 const db=new pg.Client({
-  user: "postgres",
-  localhost:"localhost",
-  password: "123456",
-  database: "blogweb",
-  port:5432
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 db.connect();
 
