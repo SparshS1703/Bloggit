@@ -5,6 +5,11 @@ import { fileURLToPath } from "url";
 import pg from "pg";
 import bcrypt from "bcrypt";
 import dotenv from 'dotenv';
+import session from 'express-session';
+
+// Middleware to initialize sessions
+
+
 dotenv.config();
 
 
@@ -34,6 +39,14 @@ const db=new pg.Client({
 db.connect();
 
 
+app.use(session({
+  secret: '123456sparsh', // Replace with a random string
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // Set to true if using HTTPS
+}));
+
+
 //middleware
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -57,13 +70,14 @@ app.get("/sign-up",(req,res)=>{
 
 
 app.get("/start",(req,res)=>{
-    if(logged===false)
-      res.redirect("/login");
-    else
-    res.render("home.ejs",{
+  if (!req.session.logged) {
+    res.redirect("/login");
+  } else {
+    res.render("home.ejs", {
       blog: blog,
-      index:index
+      index: index,
     });
+  }
 });
   
 
@@ -93,12 +107,9 @@ app.post("/Create", async (req,res)=>{
         "INSERT INTO userss (username, email, password) VALUES ($1, $2, $3)",
         [name,email, hash]
       );
-      logged=true;
-      res.render("home.ejs",{
-        blog: blog,
-        index:index,
-        cnt:cnt
-      });
+      req.session.logged = true; // Set session
+      req.session.username = name;
+      res.redirect("/start");
     }
     });
   } }
@@ -127,12 +138,9 @@ app.post("/login", async (req, res) => {
           console.error("Error comparing passwords:", err);
         } else {
           if (result) {
-            logged=true;
-            res.render("home.ejs",{
-              blog: blog,
-              index:index,
-              cnt:cnt
-            });
+            req.session.logged = true;
+            req.session.username = name;
+            res.redirect("/start");
           } else {
             res.send("Incorrect Password");
           }
@@ -172,13 +180,6 @@ app.post("/homee",(req,res)=>{
   cnt=1;
   res.redirect("/homee")
 })
-
-
-
-
-
-
-
 
 
 
