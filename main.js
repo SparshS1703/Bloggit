@@ -36,7 +36,33 @@ const db=new pg.Client({
     rejectUnauthorized: false,
   },
 });
-db.connect();
+const createUsersTable = async () => {
+  const query = `
+    CREATE TABLE IF NOT EXISTS userss (
+      id SERIAL PRIMARY KEY,
+      username VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL UNIQUE,
+      password VARCHAR(255) NOT NULL
+    );
+  `;
+  try {
+    await db.query(query);
+    console.log("Table created or already exists.");
+  } catch (err) {
+    console.error("Error creating table:", err);
+  }
+};
+
+// Call the function after connecting to the database
+db.connect((err) => {
+  if (err) {
+    console.error("Connection error", err.stack);
+  } else {
+    console.log("Connected to the database");
+    createUsersTable();
+  }
+});
+
 
 
 app.use(session({
