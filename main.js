@@ -6,7 +6,8 @@ import pg from "pg";
 import bcrypt from "bcrypt";
 import dotenv from 'dotenv';
 import session from 'express-session';
-
+import Redis from 'ioredis'; // For Redis
+import connectRedis from 'connect-redis'; // For Redis session store
 // Middleware to initialize sessions
 
 
@@ -23,19 +24,45 @@ let blog=[];
 let index=-1;
 let cnt=0;
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
 
-
-
-const db=new pg.Client({
+const db = new pg.Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
   },
 });
+
+db.connect((err) => {
+  if (err) {
+    console.error("Connection error", err.stack);
+  } else {
+    console.log("Connected to the database");
+    createUsersTable();
+  }
+});
+
+// Redis session store setup
+const RedisStore = connectRedis(session);
+const redisClient = new Redis(process.env.REDIS_URL); // Assuming you have Redis URL from Render or other provider
+
+app.use(
+  session({
+    store: new RedisStore({ client: redisClient }),
+    secret: '123456sparsh',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    },
+  })
+);
+
 const createUsersTable = async () => {
   const query = `
     CREATE TABLE IF NOT EXISTS userss (
@@ -65,12 +92,6 @@ db.connect((err) => {
 
 
 
-app.use(session({
-  secret: '123456sparsh', // Replace with a random string
-  resave: false,
-  saveUninitialized: false,
-  cookie: {  secure: process.env.NODE_ENV === 'production' } // Set to true if using HTTPS
-}));
 
 
 //middleware
