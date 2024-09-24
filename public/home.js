@@ -50,7 +50,7 @@ for(let i=0;i<options.length;i++){
     options[i].addEventListener("click",async function (e){
             
             let index2=e.currentTarget.id;
-            const req=new Request("http://localhost:3000/homee",{
+            const req=new Request("https://bloggits-gze1.onrender.com/homee",{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json' // Ensures the server treats the body as JSON
@@ -96,7 +96,7 @@ del[i].addEventListener("click",async (e)=>{
 
         console.log("Delete post at index:", postIndex, "from blog at index:", blogIndex);
 
-        const req=new Request("http://localhost:3000/deletepost",{
+        const req=new Request("/deletepost",{
             method: "POST",
             headers: {
                 'Content-Type': 'application/json' // Ensures the server treats the body as JSON

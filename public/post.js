@@ -18,7 +18,7 @@ contentnew.addEventListener("change",(e)=>{
 
 save.addEventListener("click",async function(e){
     e.preventDefault();
-    const req=new Request("http://localhost:3000/savepost",{
+    const req=new Request("/savepost",{
         method:"POST",
         headers: {
             'Content-Type': 'application/json' // Ensures the server treats the body as JSON
